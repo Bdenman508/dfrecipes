@@ -1,10 +1,10 @@
 package com.dfrecipes.controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,24 +13,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dfrecipes.entity.Recipe;
 import com.dfrecipes.repo.RecipesRepo;
 
-
-@CrossOrigin 
-@RequestMapping("/api/admin")
+@CrossOrigin
+@RequestMapping("/api/recipe")
 @RestController
-public class RecipesController {
+public class RecipeController {
 
 	@Autowired
-	RecipesRepo recipesRepo;
+	private RecipesRepo recipesRepo;
 	
-	 //add account 
-	  @PostMapping("/addrecipes")
-		Recipe newRecipes(@RequestBody Recipe recipes){
-		  return recipesRepo.save(recipes); 
-		  }
-	
-	
-	@GetMapping("/getrecipes")
-	List<Recipe> getUser(){
+	@GetMapping("/get")
+	public String get() {
+		return "Hello World";
+	}
+
+	@PostMapping("/addRecipe")
+	public Recipe newRecipes(@RequestBody Recipe recipes) {
+		return recipesRepo.save(recipes);
+	}
+
+	@GetMapping("/getRecipes")
+	public List<Recipe> getRecipes() {
 		return recipesRepo.findAll();
 	}
 
