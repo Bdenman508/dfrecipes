@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dfrecipes.entity.Recipes;
+import com.dfrecipes.entity.Recipe;
 import com.dfrecipes.repo.RecipesRepo;
 
 
@@ -24,13 +24,13 @@ public class RecipesController {
 	
 	 //add account 
 	  @PostMapping("/addrecipes")
-		Recipes newRecipes(@RequestBody Recipes recipes){
+		Recipe newRecipes(@RequestBody Recipe recipes){
 		  return recipesRepo.save(recipes); 
 		  }
 	
 	
 	@GetMapping("/getrecipes")
-	List<Recipes> getUser(){
+	List<Recipe> getUser(){
 		return recipesRepo.findAll();
 	}
 
